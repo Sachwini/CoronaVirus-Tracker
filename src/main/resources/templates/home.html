@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Corona Update</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<h1>Corona Virus update</h1>
+<p>Reported Cases and Deaths by Country, Territory, or Conveyance</p>
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+    <p class="lead">Total number of cases reported today</p>
+    <hr class="my-4">
+    <p>
+        <span>Total number of new cases reported since yesterday </span>
+        <span th:text="${totalDiffCases}"></span>
+    </p>
+</div>
+
+<p th:text="${testName}"></p>
+
+<table class="table">
+    <tr>
+        <th>Province/State</th>
+        <th>Country/Region</th>
+        <th>Latest Total Cases</th>
+        <th>Changes since Last day</th>
+    </tr>
+    <tr th:each="Stats : ${locationStats}">
+        <td th:text="${Stats.state}"></td>
+        <td th:text="${Stats.country}"></td>
+        <td th:text="${Stats.latestTotalCases}">0</td>
+        <td th:text="${Stats.diffYT}">0</td>
+    </tr>
+</table>
+</div>
+</body>
+
+</html>
